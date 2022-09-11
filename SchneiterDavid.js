@@ -42,7 +42,7 @@ const usuario = new Usuario(
       Author: "J. R. R. Tolkien",
     },
   ],
-  ["Noha", "Vaquita"]
+  ["Perro", "Gato"]
 );
 
 console.log(usuario.getFullName());
