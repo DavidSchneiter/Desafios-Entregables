@@ -1,32 +1,30 @@
 class Usuario {
-  constructor(nombre = "", apellido = "", libros = [], mascotas = []) {
-    (this.nombre = nombre),
-      (this.apellido = apellido),
-      (this.libros = libros),
-      (this.mascotas = mascotas);
+  constructor(name, lastname, books = [], pets = []) {
+    (this.name = name),
+      (this.lastname = lastname),
+      (this.books = books),
+      (this.pets = pets);
   }
 
   getFullName() {
-    return `${this.apellido} ${this.nombre}`;
+    return `${this.lastname} ${this.name}`;
   }
 
   addMascotas(pet) {
-    this.mascotas.push(pet);
+    this.pets.push(pet);
   }
 
   countMascotas() {
-    return this.mascotas.length;
+    return this.pets.length;
   }
 
-  addBook(book) {
-    if (typeof book == "object") {
-      this.libros.push(book);
-    }
+  addBook(Title, Author) {
+    this.books.push({ Title, Author });
   }
 
   getBookNames() {
-    return this.libros.map(({ Nombre }) => {
-      return Nombre;
+    return this.books.map(({ Title }) => {
+      return Title;
     });
   }
 }
@@ -36,12 +34,12 @@ const usuario = new Usuario(
   "Schneiter",
   [
     {
-      Nombre: "Martin Fierro",
-      Autor: "José Hernández",
+      Title: "Martin Fierro",
+      Author: "José Hernández",
     },
     {
-      Nombre: "El señor de los anillos",
-      Autor: "J. R. R. Tolkien",
+      Title: "El señor de los anillos",
+      Author: "J. R. R. Tolkien",
     },
   ],
   ["Noha", "Vaquita"]
@@ -52,5 +50,6 @@ console.log(usuario.countMascotas());
 usuario.addMascotas("Loro");
 console.log(usuario.countMascotas());
 console.log(usuario.getBookNames());
-usuario.addBook({ Nombre: "Cantar del Mio Cid", Autor: "Per Abbat" });
+usuario.addBook("Cantar del Mio Cid", "Per Abbat");
 console.log(usuario.getBookNames());
+console.log(usuario.books);
