@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Coca Cola",
+    "price": 300,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_854112-MLA47134564539_082021-O.webp",
+    "id": 1
+  },
+  {
+    "title": "Papas Lays",
+    "price": 200,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_854112-MLA47134564539_082021-O.webp",
+    "id": 2
+  },
+  {
+    "title": "Don Satur Dulces",
+    "price": 160,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_854112-MLA47134564539_082021-O.webp",
+    "id": 3
+  }
+]
