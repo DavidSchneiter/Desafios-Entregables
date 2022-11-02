@@ -1,0 +1,1 @@
+export { getTime } from './getTime'
