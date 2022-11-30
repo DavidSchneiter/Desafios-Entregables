@@ -1,0 +1,32 @@
+[
+  {
+    "id": "39190438-1592-426c-946d-9d6a60782b44",
+    "title": "Chief Data Associate",
+    "price": 4971,
+    "thumbnail": "https://loremflickr.com/640/480/fashion"
+  },
+  {
+    "id": "5bd333be-ce07-4621-bb71-f30031a7f8e5",
+    "title": "District Research Assistant",
+    "price": 49331,
+    "thumbnail": "https://loremflickr.com/640/480/animals"
+  },
+  {
+    "id": "0750e4cf-1a19-4e35-a4a7-15b103dac0e7",
+    "title": "Forward Marketing Producer",
+    "price": 22021,
+    "thumbnail": "https://loremflickr.com/640/480/city"
+  },
+  {
+    "id": "3e7d88a0-26cb-43d8-8168-cf4a502d9a9b",
+    "title": "Chief Accounts Specialist",
+    "price": 91565,
+    "thumbnail": "https://loremflickr.com/640/480/food"
+  },
+  {
+    "id": "54e68e36-ad1d-43af-8327-c1df7054392a",
+    "title": "Central Factors Analyst",
+    "price": 17865,
+    "thumbnail": "https://loremflickr.com/640/480/technics"
+  }
+]
