@@ -1,0 +1,22 @@
+[
+  {
+    "entities": {
+      "contenedor": {
+        "david28091998@gmail.com": {
+          "id": "david28091998@gmail.com",
+          "nombre": "David",
+          "apellido": "Schneiter",
+          "edad": "",
+          "alias": "Capocha",
+          "avatar": ""
+        }
+      }
+    },
+    "result": [
+      "david28091998@gmail.com",
+      "",
+      "29/11/2022 10:00:41 hs"
+    ],
+    "id": 1
+  }
+]
