@@ -1,0 +1,33 @@
+<h1>Información del Proyecto </h1>
+<table class="table table-dark">
+    {{#with info }}
+    <tr>
+        <th>Directorio del proyecto</th>
+        <td>{{directorio}} </td>
+    </tr>
+    <tr>
+        <th>Process ID</th>
+        <td>{{pid}} </td>
+    </tr>
+    <tr>
+        <th>Version NODE</th>
+        <td>{{nodeVersion}} </td>
+    </tr>
+    <tr>
+        <th>PATH</th>
+        <td>{{title}} </td>
+    </tr>
+    <tr>
+        <th>Sistema Operativo</th>
+        <td>{{sistemaOperativo}} </td>
+    </tr>
+    <tr>
+        <th>Memoria RSS</th>
+        <td>{{memoria}} </td>
+    </tr>
+    <tr>
+        <th>Args</th>
+        <td>{{args}} </td>
+    </tr>
+    {{/with}}
+</table>
