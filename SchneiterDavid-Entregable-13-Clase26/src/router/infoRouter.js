@@ -1,9 +1,11 @@
 const express = require("express");
 const { Router } = express;
+const cpus = require("os").cpus();
 
 const infoApi = Router();
 
 infoApi.get("/", (req, res) => {
+  // console.log(process.argv.slice(2));
   const datos = {
     directorio: process.cwd(),
     pid: process.pid,
@@ -12,6 +14,7 @@ infoApi.get("/", (req, res) => {
     sistemaOperativo: process.platform,
     memoria: process.memoryUsage().rss,
     args: process.argv.slice(2),
+    procesadores: cpus.length,
   };
 
   res.render("info", { info: datos });
