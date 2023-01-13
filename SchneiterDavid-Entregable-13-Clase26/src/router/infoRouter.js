@@ -2,9 +2,10 @@ const express = require("express");
 const { Router } = express;
 const cpus = require("os").cpus();
 
+const compression = require("compression");
 const infoApi = Router();
 
-infoApi.get("/", (req, res) => {
+infoApi.get("/", compression(), (req, res) => {
   // console.log(process.argv.slice(2));
   const datos = {
     directorio: process.cwd(),

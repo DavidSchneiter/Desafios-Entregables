@@ -6,7 +6,7 @@ const container = new Contenedor("productos");
 
 const routerApi = Router();
 
-routerApi.get("/", async (req, res) => {
+routerApi.get("/", async (err, req, res) => {
   res.status(200).json(await container.getAll());
 });
 

@@ -7,6 +7,8 @@ const infoApi = require("./src/router/infoRouter.js");
 const strategy = require("./src/passport/strategy");
 require("dotenv").config();
 
+const logger = require("./src/utils/logger");
+
 const cluster = require("cluster");
 const cpus = require("os").cpus();
 
@@ -25,6 +27,7 @@ const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const User = require("./src/models/User.js");
 const { default: mongoose } = require("mongoose");
+const { response } = require("express");
 mongoose.set("strictQuery", true);
 const advancedOptions = {
   useNewUrlParser: true,
@@ -95,44 +98,47 @@ app.use("/", viewsApi);
 app.use("/api/productos", routerApi);
 app.use("/api/random", randomApi);
 app.use("/info", infoApi);
-
-// if (cluster.isPrimary) {
-//   const lengthCpu = cpus.length;
-//   for (let index = 0; index < lengthCpu; index++) {
-//     cluster.fork();
-//   }
-// } else {
-//   const server = app.listen(PORT, async () => {
-//     console.log(
-//       `Servidor de exprees ejecutandose en el puerto (${PORT}) - PID (${process.pid})`
-//     );
-//     // console.log(args);
-//     try {
-//       await mongoose.connect(process.env.MONGO_DB_URI, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//       });
-//       // console.log("Mongo Connect");
-//     } catch (err) {
-//       console.log("Error" + err);
-//     }
-//   });
-
-//   server.on("error", (error) => console.log(`Erorr en el servidor ${error}`));
-// }
-
-const server = app.listen(PORT, async () => {
-  console.log(`Servidor de exprees ejecutandose en el puerto ${PORT}`);
-  console.log(args);
-  try {
-    await mongoose.connect(process.env.MONGO_DB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Mongo Connect");
-  } catch (err) {
-    console.log("Error" + err);
+app.use((req, res, next) => {
+  if (res.status(404)) {
+    logger.warn(`Page not found, Url:  ${req.url}, metodo: ${req.method}`);
   }
+
+  next();
 });
 
-server.on("error", (error) => console.log(`Erorr en el servidor ${error}`));
+if (args.modo == "CLUSTER" && cluster.isPrimary) {
+  const lengthCpu = cpus.length;
+  for (let index = 0; index < lengthCpu; index++) {
+    cluster.fork();
+  }
+} else {
+  const server = app.listen(PORT, async () => {
+    logger.info(`Servidor de exprees ejecutandose en el puerto ${PORT}`);
+    try {
+      await mongoose.connect(process.env.MONGO_DB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      logger.info("Mongo Connect");
+    } catch (err) {
+      logger.error("Error" + err);
+    }
+  });
+
+  server.on("error", (error) => logger.error(`Erorr en el servidor ${error}`));
+}
+
+// const server = app.listen(PORT, async () => {
+//   logger.info(`Servidor de exprees ejecutandose en el puerto ${PORT}`);
+//   try {
+//     await mongoose.connect(process.env.MONGO_DB_URI, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     });
+//     logger.info("Mongo Connect");
+//   } catch (err) {
+//     logger.error("Error" + err);
+//   }
+// });
+
+// server.on("error", (error) => logger.error(`Erorr en el servidor ${error}`));
