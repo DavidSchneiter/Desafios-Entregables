@@ -1,0 +1,8 @@
+[
+  {
+    "title": "123",
+    "price": "543",
+    "thumbnail": "asd",
+    "id": 1
+  }
+]

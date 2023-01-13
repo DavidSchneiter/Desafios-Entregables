@@ -6,7 +6,7 @@ const random = require("../utils/rng");
 const randomApi = Router();
 
 randomApi.get("/", (req, res) => {
-  const params = req.query.cant || 10;
+  const params = req.query.cant || 10000;
   // const child = fork("src/utils/child.js", [params]);
   // child.on("message", (msg) => {
   //   if (msg == "ready") {

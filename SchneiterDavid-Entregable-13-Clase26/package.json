@@ -4,9 +4,9 @@
   "description": "",
   "main": "serverExpress.js",
   "scripts": {
-    "test": "node benchmark.js",
+    "test": "node ./debug/benchmark.js",
     "start": "0x -o serverExpress.js",
-    "dev": "nodemon serverExpress.js"
+    "dev": "nodemon ./src/serverExpress.js"
   },
   "keywords": [],
   "author": "",
