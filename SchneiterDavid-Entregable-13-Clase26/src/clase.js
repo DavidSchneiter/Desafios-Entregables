@@ -19,7 +19,7 @@ class Contenedor {
     });
     try {
       await fs.promises.writeFile(
-        `./${this.file}.txt`,
+        `./src/db/${this.file}.txt`,
         JSON.stringify(this.contain, null, 2)
       );
       return `Id asignado al producto ${obj.title}: ${obj.id}`;
@@ -29,7 +29,10 @@ class Contenedor {
   }
   async getById(id) {
     try {
-      const data = await fs.promises.readFile(`./${this.file}.txt`, "utf-8");
+      const data = await fs.promises.readFile(
+        `./src/db/${this.file}.txt`,
+        "utf-8"
+      );
       return JSON.parse(data).filter((e) => {
         return e.id == parseInt(id);
       });
@@ -49,7 +52,10 @@ class Contenedor {
   // }
   async getAll() {
     try {
-      const data = await fs.promises.readFile(`./${this.file}.txt`, "utf-8");
+      const data = await fs.promises.readFile(
+        `./src/db/${this.file}.txt`,
+        "utf-8"
+      );
       if (!data) return "Archivo vacio";
       return JSON.parse(data);
     } catch (error) {
@@ -58,12 +64,18 @@ class Contenedor {
   }
   async deleteById(id) {
     try {
-      const data = await fs.promises.readFile(`./${this.file}.txt`, "utf-8");
+      const data = await fs.promises.readFile(
+        `./src/db/${this.file}.txt`,
+        "utf-8"
+      );
       const newData = JSON.parse(data).filter((e) => {
         return e.id !== parseInt(id);
       });
       this.contain = newData;
-      fs.writeFileSync(`./${this.file}.txt`, JSON.stringify(newData, null, 2));
+      fs.writeFileSync(
+        `./src/db/${this.file}.txt`,
+        JSON.stringify(newData, null, 2)
+      );
       return newData;
     } catch (error) {
       throw new Error("Imposible leer archivo", error);
